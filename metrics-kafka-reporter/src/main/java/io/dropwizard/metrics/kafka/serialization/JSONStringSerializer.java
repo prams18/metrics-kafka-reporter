@@ -195,6 +195,7 @@ public class JSONStringSerializer implements KafkaMetricsSerializer {
 
             // add additional fields and close/flush the JSON
             jsonGenerator.writeObjectField("timestamp", IsoFormatter.format(timestamp));
+            jsonGenerator.writeObjectField("metricsType", metric.getValue().getClass().getName());
             jsonGenerator.writeEndObject();
             jsonGenerator.flush();
 
